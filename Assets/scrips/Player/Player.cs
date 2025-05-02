@@ -1,3 +1,4 @@
+using UnityEditor.Experimental.GraphView;
 using UnityEngine;
 using UnityEngine.EventSystems;
 
@@ -11,15 +12,39 @@ public class Player : MonoBehaviour
     private bool iswalking;
     private void Update()
     {
+        HandleMovement();
+        HandleInteractions();
+    }
+
+    private void HandleInteractions()
+    {
         Vector2 inputVector = gameInput.GetMovementVectorNormalized();
 
 
         Vector3 moveDir = new Vector3(inputVector.x, 0f, inputVector.y);
-       
+
+        float interactDistance = 2f;
+
+        if (Physics.Raycast(transform.position, moveDir, out RaycastHit raycastHit, interactDistance))
+        {
+            Debug.Log(raycastHit.transform);
+        }
+        else
+        {
+            Debug.Log("-");
+        }
+    }
+    private void HandleMovement()
+    {
+        Vector2 inputVector = gameInput.GetMovementVectorNormalized();
+
+
+        Vector3 moveDir = new Vector3(inputVector.x, 0f, inputVector.y);
+
         float moveDistance = moveSpeed * Time.deltaTime;
-        float playerHeight = 2f; 
+        float playerHeight = 2f;
         float playerRadius = .7f;
-        bool canMove = !Physics.CapsuleCast(transform.position,transform.position + Vector3.up * playerHeight, playerRadius, moveDir, moveDistance);
+        bool canMove = !Physics.CapsuleCast(transform.position, transform.position + Vector3.up * playerHeight, playerRadius, moveDir, moveDistance);
 
         if (!canMove)
         {
@@ -51,11 +76,15 @@ public class Player : MonoBehaviour
             }
         }
         float rotateSpeed = 5f;
-        transform.forward = Vector3.Slerp(transform.forward, moveDir, Time.deltaTime *rotateSpeed);   
-
+        transform.forward = Vector3.Slerp(transform.forward, moveDir, Time.deltaTime * rotateSpeed);
     }
-    public bool IsWalking()
+
+          public bool IsWalking()
     {
         return iswalking;
     }
 }
+
+
+  
+
