@@ -9,7 +9,8 @@ public class Player : MonoBehaviour
    [SerializeField] private float moveSpeed = 7f;
     [SerializeField] private GameInput gameInput; 
 
-    private bool iswalking;
+    private bool isWalking;
+
     private void Update()
     {
         HandleMovement();
@@ -71,17 +72,22 @@ public class Player : MonoBehaviour
                 if (canMove)
                 {
                     transform.position += moveDir * moveDistance;
-                    iswalking = moveDir != Vector3.zero;
+                   
                 }
             }
         }
+
+        isWalking = moveDir != Vector3.zero;
+
         float rotateSpeed = 5f;
         transform.forward = Vector3.Slerp(transform.forward, moveDir, Time.deltaTime * rotateSpeed);
+
     }
+
 
           public bool IsWalking()
     {
-        return iswalking;
+        return isWalking;
     }
 }
 
