@@ -1,4 +1,3 @@
-using UnityEditor.Experimental.GraphView;
 using UnityEngine;
 using UnityEngine.EventSystems;
 
@@ -7,7 +6,7 @@ public class Player : MonoBehaviour
 {
 
    [SerializeField] private float moveSpeed = 7f;
-    [SerializeField] private GameInput gameInput; 
+   [SerializeField] private GameInput gameInput; 
 
     private bool isWalking;
 
@@ -45,6 +44,7 @@ public class Player : MonoBehaviour
         float moveDistance = moveSpeed * Time.deltaTime;
         float playerHeight = 2f;
         float playerRadius = .7f;
+
         bool canMove = !Physics.CapsuleCast(transform.position, transform.position + Vector3.up * playerHeight, playerRadius, moveDir, moveDistance);
 
         if (!canMove)
