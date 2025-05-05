@@ -1,4 +1,6 @@
 using UnityEngine;
+using Unity.Collections;
+using System.Collections.Generic;
 using UnityEngine.EventSystems;
 
 public class Player : MonoBehaviour
@@ -22,6 +24,12 @@ public class Player : MonoBehaviour
 
 
         Vector3 moveDir = new Vector3(inputVector.x, 0f, inputVector.y);
+
+        isWalking = moveDir != Vector3.zero;
+
+
+        float rotateSpeed = 5f;
+        transform.forward = Vector3.Slerp(transform.forward, moveDir, Time.deltaTime * rotateSpeed);
 
         float interactDistance = 2f;
 
@@ -77,10 +85,8 @@ public class Player : MonoBehaviour
             }
         }
 
-        isWalking = moveDir != Vector3.zero;
+        
 
-        float rotateSpeed = 5f;
-        transform.forward = Vector3.Slerp(transform.forward, moveDir, Time.deltaTime * rotateSpeed);
 
     }
 
