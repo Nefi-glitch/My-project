@@ -11,11 +11,17 @@ public class Player : MonoBehaviour
    [SerializeField] private GameInput gameInput; 
 
     private bool isWalking;
+    private Vector3 lastInteractDir;
 
     private void Update()
     {
         HandleMovement();
         HandleInteractions();
+    }
+
+    public bool IsWalking()
+    {
+        return isWalking;
     }
 
     private void HandleInteractions()
@@ -25,14 +31,14 @@ public class Player : MonoBehaviour
 
         Vector3 moveDir = new Vector3(inputVector.x, 0f, inputVector.y);
 
-        isWalking = moveDir != Vector3.zero;
-
-
+        if (moveDir != Vector3.zero)
+        {
+            lastInteractDir = moveDir;
+        }
         float rotateSpeed = 5f;
-        transform.forward = Vector3.Slerp(transform.forward, moveDir, Time.deltaTime * rotateSpeed);
+        transform.forward = Vector3.Slerp(transform.forward, lastInteractDir, Time.deltaTime * rotateSpeed);
 
         float interactDistance = 2f;
-
         if (Physics.Raycast(transform.position, moveDir, out RaycastHit raycastHit, interactDistance))
         {
             Debug.Log(raycastHit.transform);
@@ -83,6 +89,7 @@ public class Player : MonoBehaviour
                    
                 }
             }
+            isWalking = moveDir != Vector3.zero;
         }
 
         
@@ -90,11 +97,6 @@ public class Player : MonoBehaviour
 
     }
 
-
-          public bool IsWalking()
-    {
-        return isWalking;
-    }
 }
 
 
