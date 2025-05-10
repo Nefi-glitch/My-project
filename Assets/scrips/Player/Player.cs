@@ -2,10 +2,18 @@ using UnityEngine;
 using Unity.Collections;
 using System.Collections.Generic;
 using UnityEngine.EventSystems;
+using UnityEditor.Experimental.GraphView;
+using System;
 
 public class Player : MonoBehaviour
-
 {
+    public static Player Instance { get; private set; }
+
+    public event EventHandler <OnSelectedCounterCangedEventArgs> OnSelectedCounterChanged;
+    public class OnSelectedCounterCangedEventArgs : EventArgs
+    {
+        public ClearCounter selectedCounter;
+    }
 
    [SerializeField] private float moveSpeed = 7f;
    [SerializeField] private GameInput gameInput;
@@ -13,6 +21,24 @@ public class Player : MonoBehaviour
 
     private bool isWalking;
     private Vector3 lastInteractDir;
+    private ClearCounter selectedCounter;
+
+    private void Awake()
+    {
+        Instance = this;
+    }
+    private void Start()
+    {
+        gameInput.OnInteractAction += GameInput_OnInteractAction;
+    }
+
+    private void GameInput_OnInteractAction(object sender, System.EventArgs e)
+    {
+        if (selectedCounter != null)
+        {
+            selectedCounter.Interact();
+        }
+    }
 
     private void Update()
     {
@@ -43,7 +69,18 @@ public class Player : MonoBehaviour
         {
             if (raycastHit.transform.TryGetComponent(out ClearCounter clearCounter))
             {
-                clearCounter.Interact();
+                if (clearCounter != selectedCounter)
+                {
+                   SetSelectedCounter  (clearCounter);
+                }
+                else
+                {
+                    SetSelectedCounter (null);
+                }
+            }
+            else
+            {
+                SetSelectedCounter (null);
             }
         }
     }
@@ -92,12 +129,20 @@ public class Player : MonoBehaviour
             }
             isWalking = moveDir != Vector3.zero;
         }
-
+        
         
 
 
     }
-
+    private void SetSelectedCounter(ClearCounter selectedCounter)
+    {
+        this.selectedCounter = selectedCounter;
+          
+        OnSelectedCounterChanged?.Invoke(this, new OnSelectedCounterCangedEventArgs
+        {
+            selectedCounter = selectedCounter
+        });
+    }
 }
 
 
