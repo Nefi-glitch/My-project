@@ -1,16 +1,10 @@
 using UnityEngine;
 
-public class KitchenObjectOS : MonoBehaviour
-{
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
-    void Start()
-    {
-        
-    }
+[CreateAssetMenu()]
 
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
+public class KitchenObjectSO: MonoBehaviour
+{
+    public Transform prefab;
+    public Sprite sprite;
+    public string objectName;
 }
