@@ -121,16 +121,17 @@ public class Player : MonoBehaviour
                 }
                 else { }
 
-                if (canMove)
-                {
-                    transform.position += moveDir * moveDistance;
-                   
-                }
+               
             }
             isWalking = moveDir != Vector3.zero;
         }
-        
-        
+        if (canMove)
+        {
+            transform.position += moveDir * moveDistance;
+
+        }
+
+
 
 
     }
