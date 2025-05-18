@@ -5,6 +5,7 @@ public class ClearCounter : MonoBehaviour
  
     [SerializeField] private Transform counterTopPoint;
     [SerializeField] private KitchenObjectSO kitchenObjectSO;
+    [SerializeField] private Transform tomatoPrefab;
 
     public void Interact()
     {
