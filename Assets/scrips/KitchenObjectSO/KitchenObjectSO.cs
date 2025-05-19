@@ -2,7 +2,7 @@ using UnityEngine;
 
 [CreateAssetMenu()]
 
-public class KitchenObjectSO: MonoBehaviour
+public class KitchenObjectSO: ScriptableObject
 {
     public Transform prefab;
     public Sprite sprite;

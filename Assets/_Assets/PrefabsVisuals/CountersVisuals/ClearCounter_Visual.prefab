@@ -79,8 +79,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   counterTopPoint: {fileID: 5269679384301866133}
-  kitchenObjectSO: {fileID: 11400000, guid: 7c53ea1f384edb44681715aac6815683, type: 2}
-  tomatoPrefab: {fileID: 3122943793780361775}
+  kitchenObjectSO: {fileID: 11400000, guid: ca9de8599da5a46449eec0633022e0f8, type: 2}
 --- !u!1 &6627043781176840850
 GameObject:
   m_ObjectHideFlags: 0
@@ -128,8 +127,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   counterTopPoint: {fileID: 0}
-  kitchenObjectSO: {fileID: 0}
-  tomatoPrefab: {fileID: 0}
+  kitchenObjectSO: {fileID: 11400000, guid: ca9de8599da5a46449eec0633022e0f8, type: 2}
 --- !u!114 &3871278722818426115
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -142,7 +140,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b1eb672775270974ea8b72aceb9ff0c5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  clearCounter: {fileID: -8070483492150412726}
+  clearCounter: {fileID: 6816161665303974633}
   visualGameObject: {fileID: 8790302440719137572}
 --- !u!1 &8489276541531669327
 GameObject:
