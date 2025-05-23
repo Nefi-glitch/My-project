@@ -525,6 +525,11 @@ Transform:
   m_Children: []
   m_Father: {fileID: 908777446}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!4 &750433671 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 5269679384301866133, guid: 0004cb1e11ad014419b943c7da960724, type: 3}
+  m_PrefabInstance: {fileID: 1915319529}
+  m_PrefabAsset: {fileID: 0}
 --- !u!4 &809325760 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 4589716710238282923, guid: 0004cb1e11ad014419b943c7da960724, type: 3}
@@ -643,6 +648,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9fe8176428ce7bd4395c505cbeadedc1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!4 &1051126067 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 5269679384301866133, guid: 0004cb1e11ad014419b943c7da960724, type: 3}
+  m_PrefabInstance: {fileID: 1904191304}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1120036028
 GameObject:
   m_ObjectHideFlags: 0
@@ -653,6 +663,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1120036030}
   - component: {fileID: 1120036029}
+  - component: {fileID: 1120036031}
   m_Layer: 3
   m_Name: ClearCounter
   m_TagString: Untagged
@@ -697,6 +708,20 @@ Transform:
   - {fileID: 809325760}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 180, z: 0}
+--- !u!114 &1120036031
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1120036028}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6eb48c1f7b9bae347b54960d172c1c03, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  counterTopPoint: {fileID: 750433671}
+  kitchenObjectSO: {fileID: 11400000, guid: ca9de8599da5a46449eec0633022e0f8, type: 2}
 --- !u!1 &1320620824
 GameObject:
   m_ObjectHideFlags: 0
@@ -914,6 +939,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1468957220}
   - component: {fileID: 1468957219}
+  - component: {fileID: 1468957221}
   m_Layer: 3
   m_Name: ClearCounter (1)
   m_TagString: Untagged
@@ -958,6 +984,20 @@ Transform:
   - {fileID: 1904191305}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1468957221
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1468957218}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6eb48c1f7b9bae347b54960d172c1c03, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  counterTopPoint: {fileID: 1051126067}
+  kitchenObjectSO: {fileID: 11400000, guid: 815eb66a08dc6114e924a4ab8d4caf22, type: 2}
 --- !u!1001 &1904191304
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -970,6 +1010,10 @@ PrefabInstance:
       propertyPath: tomatoPrefab
       value: 
       objectReference: {fileID: 0}
+    - target: {fileID: -8070483492150412726, guid: 0004cb1e11ad014419b943c7da960724, type: 3}
+      propertyPath: kitchenObjectSO
+      value: 
+      objectReference: {fileID: 11400000, guid: 815eb66a08dc6114e924a4ab8d4caf22, type: 2}
     - target: {fileID: 4589716710238282922, guid: 0004cb1e11ad014419b943c7da960724, type: 3}
       propertyPath: m_Name
       value: ClearCounter_Visual
