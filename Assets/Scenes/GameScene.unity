@@ -722,6 +722,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   counterTopPoint: {fileID: 750433671}
   kitchenObjectSO: {fileID: 11400000, guid: ca9de8599da5a46449eec0633022e0f8, type: 2}
+  secondClearCounter: {fileID: 1468957221}
+  testing: 1
 --- !u!1 &1320620824
 GameObject:
   m_ObjectHideFlags: 0
@@ -998,6 +1000,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   counterTopPoint: {fileID: 1051126067}
   kitchenObjectSO: {fileID: 11400000, guid: 815eb66a08dc6114e924a4ab8d4caf22, type: 2}
+  secondClearCounter: {fileID: 0}
+  testing: 0
 --- !u!1001 &1904191304
 PrefabInstance:
   m_ObjectHideFlags: 0

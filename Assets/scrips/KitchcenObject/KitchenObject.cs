@@ -1,6 +1,6 @@
 using UnityEngine;
 
-public class KitcehnObject : MonoBehaviour
+public class KitchenObject : MonoBehaviour
 {
     [SerializeField] private KitchenObjectSO kitchenObjectSO;
 

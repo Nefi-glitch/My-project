@@ -5,23 +5,36 @@ public class ClearCounter : MonoBehaviour
 
     [SerializeField] private Transform counterTopPoint;
     [SerializeField] private KitchenObjectSO kitchenObjectSO;
+    [SerializeField] private ClearCounter secondClearCounter;
+    [SerializeField] private bool testing;
 
-    private KitcehnObject kitcehnObject;
+    private KitchenObject kitchenObject;
 
+    private void Update()
+    {
+        if (testing && Input.GetKeyDown(KeyCode.T))
+        {
+            if (kitchenObjectSO != null)
+            {
+                kitchenObject.SetClearCounter(secondClearCounter);
+                Debug.Log(kitchenObject.GetClearCounter());
+            }
+        }
+    }
     public void Interact()
     {
-        if (kitcehnObject == null)
+        if (kitchenObject == null)
         {
 
             Transform kitchenObjectTransform = Instantiate(kitchenObjectSO.prefab, counterTopPoint);
             kitchenObjectTransform.localPosition = Vector3.zero;
 
-            kitcehnObject = kitchenObjectTransform.GetComponent<KitcehnObject>();
-            kitcehnObject.SetClearCounter(this);
+            kitchenObject = kitchenObjectTransform.GetComponent<KitchenObject>();
+            kitchenObject.SetClearCounter(this);
         }
         else
         {
-            Debug.Log(kitcehnObject.GetClearCounter());
+            Debug.Log(kitchenObject.GetClearCounter());
         }
         
     }
