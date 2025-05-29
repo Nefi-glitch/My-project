@@ -5,7 +5,7 @@ using UnityEngine.EventSystems;
 using UnityEditor.Experimental.GraphView;
 using System;
 
-public class Player : MonoBehaviour
+public class Player : MonoBehaviour, IKitchenObjectPlayer 
 {
     public static Player Instance { get; private set; }
 
@@ -17,11 +17,13 @@ public class Player : MonoBehaviour
 
    [SerializeField] private float moveSpeed = 7f;
    [SerializeField] private GameInput gameInput;
-   [SerializeField] private LayerMask counterlayerMask;  
+   [SerializeField] private LayerMask counterlayerMask;
+   [SerializeField] private Transform counterTopPoint;
 
     private bool isWalking;
     private Vector3 lastInteractDir;
     private ClearCounter selectedCounter;
+    private KitchenObject kitchenObject;
 
     private void Awake()
     {
@@ -36,7 +38,7 @@ public class Player : MonoBehaviour
     {
         if (selectedCounter != null)
         {
-            selectedCounter.Interact();
+            selectedCounter.Interact(this);
         }
     }
 
@@ -144,6 +146,42 @@ public class Player : MonoBehaviour
             selectedCounter = selectedCounter
         });
     }
+
+    public Transform GetKitchenObjectFollowTrasnform()
+    {
+        throw new NotImplementedException();
+    }
+
+    public void SetKitchenObject(KitchenObject kitchenObject)
+    {
+        throw new NotImplementedException();
+    }
+
+    public KitchenObject GetKitchenObject()
+    {
+        throw new NotImplementedException();
+    }
+
+    public void ClearKitchenObejct()
+    {
+        throw new NotImplementedException();
+    }
+
+    public bool HasKitchenObject()
+    {
+        throw new NotImplementedException();
+    }
+
+    public Transform GetKitchenObjectFollowTrasnform();
+
+    public void SetKitchenObject(KitchenObject kitchenObject);
+
+    public KitchenObject GetKitchenObject();
+
+
+    public void ClearKitchenObejct();
+
+    public bool HasKitchenObject();
 }
 
 
