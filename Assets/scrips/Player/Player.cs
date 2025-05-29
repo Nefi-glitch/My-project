@@ -18,7 +18,7 @@ public class Player : MonoBehaviour, IKitchenObjectPlayer
    [SerializeField] private float moveSpeed = 7f;
    [SerializeField] private GameInput gameInput;
    [SerializeField] private LayerMask counterlayerMask;
-   [SerializeField] private Transform counterTopPoint;
+   [SerializeField] private Transform KitchenObjectHoldPoint;
 
     private bool isWalking;
     private Vector3 lastInteractDir;
@@ -149,39 +149,22 @@ public class Player : MonoBehaviour, IKitchenObjectPlayer
 
     public Transform GetKitchenObjectFollowTrasnform()
     {
-        throw new NotImplementedException();
+        return KitchenObjectHoldPoint;
     }
-
     public void SetKitchenObject(KitchenObject kitchenObject)
     {
-        throw new NotImplementedException();
+        this.kitchenObject = kitchenObject;
     }
-
     public KitchenObject GetKitchenObject()
     {
-        throw new NotImplementedException();
+        return kitchenObject;
     }
 
     public void ClearKitchenObejct()
     {
-        throw new NotImplementedException();
+        kitchenObject = null;
     }
-
-    public bool HasKitchenObject()
-    {
-        throw new NotImplementedException();
-    }
-
-    public Transform GetKitchenObjectFollowTrasnform();
-
-    public void SetKitchenObject(KitchenObject kitchenObject);
-
-    public KitchenObject GetKitchenObject();
-
-
-    public void ClearKitchenObejct();
-
-    public bool HasKitchenObject();
+    public bool HasKitchenObject() { return kitchenObject != null; }
 }
 
 
