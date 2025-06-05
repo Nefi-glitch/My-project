@@ -1,7 +1,9 @@
+using System;
 using UnityEngine;
 
 public class BaseCounter : MonoBehaviour, IKitchenObjectPlayer
 {
+
     [SerializeField] private Transform counterTopPoint;
 
     private KitchenObject kitchenObject;
@@ -9,6 +11,10 @@ public class BaseCounter : MonoBehaviour, IKitchenObjectPlayer
    {
         Debug.LogError ("BaseCounter.Interact();");
    }
+    public virtual void InteractAlternate(Player player)
+    {
+        Debug.LogError("BaseCounter.InteractAlternate();");
+    }
     public Transform GetKitchenObjectFollowTrasnform()
     {
         return counterTopPoint;

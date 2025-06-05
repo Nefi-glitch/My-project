@@ -1,3 +1,4 @@
+using UnityEditor.Experimental.GraphView;
 using UnityEngine;
 
 public class ClearCounter : BaseCounter
@@ -6,8 +7,30 @@ public class ClearCounter : BaseCounter
 
     public override void Interact(Player player)
     {
-      
-        
+        if (!HasKitchenObject())
+        {
+            if (player.HasKitchenObject())
+            {
+                player.GetKitchenObject().SetKitchenObjectPlayer(this);
+            }
+            else
+            {
+
+            }
+        }
+        else
+        {
+            if (player.HasKitchenObject())
+            {
+
+            }
+            else
+            {
+                GetKitchenObject().SetKitchenObjectPlayer(player);
+            }
+
+
+        }
     }
   
 }
