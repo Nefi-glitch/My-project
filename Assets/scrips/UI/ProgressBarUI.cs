@@ -1,22 +1,28 @@
 using UnityEngine;
 using UnityEngine.UI;
 
-public class NewMonoBehaviourScript : MonoBehaviour
+public class ProgressBarUI : MonoBehaviour
 {
-    [SerializeField] private CuttingCounter cuttingCounter;
+    [SerializeField] private GameObject hasprogressGameObject;
     [SerializeField] private Image barImage;
 
+    private IHasProgress hasProgress;
 
     private void Start()
     {
-        cuttingCounter.OnProgressChanged += CuttingCounter_OnProgressChanged;
+        hasProgress = hasprogressGameObject.GetComponent<IHasProgress>();
+        if (hasProgress != null) 
+        {
+        
+        }
+        hasProgress.OnProgressChanged += HasProgress_OnProgressChanged;
 
         barImage.fillAmount = 0f;
 
         Hide();
     }
 
-    private void CuttingCounter_OnProgressChanged(object sender, CuttingCounter.OnProgressChangedEventArgs e)
+    private void HasProgress_OnProgressChanged(object sender, IHasProgress.OnProgressChangedEventArgs e)
     {
         barImage.fillAmount = e.ProgressNormalized;
         if (e.ProgressNormalized == 0f || e.ProgressNormalized == 1f)
