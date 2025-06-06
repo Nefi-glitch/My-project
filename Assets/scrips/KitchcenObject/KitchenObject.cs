@@ -1,3 +1,6 @@
+using NUnit.Framework;
+using Unity.VisualScripting;
+using UnityEditor.Experimental.GraphView;
 using UnityEngine;
 
 public class KitchenObject : MonoBehaviour
@@ -41,6 +44,27 @@ public class KitchenObject : MonoBehaviour
 
         Destroy(gameObject);
     }
+
+
+    public bool TryGetPlate(out PlateKitchenObeject plateKitchenObeject)
+        {
+
+        if (this is PlateKitchenObeject)
+        {
+            plateKitchenObeject = this as PlateKitchenObeject;
+            return true;
+        }
+        else
+        {
+            plateKitchenObeject = null;
+            return false;
+        }
+    }
+
+    
+    
+
+
 
 
     public static KitchenObject SpawnkitchenObject(KitchenObjectSO kitchenObjectSO, IKitchenObjectPlayer kitchenObjectPlayer)
