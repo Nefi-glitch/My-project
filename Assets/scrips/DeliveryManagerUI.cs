@@ -41,7 +41,7 @@ public class DeliveryManagerUI : MonoBehaviour
         foreach (Transform child in container)
         {
             if (child == recepeTemplate) continue;
-            Destroy(child.gameObject);
+           // Destroy(child.gameObject);
         }
 
 
