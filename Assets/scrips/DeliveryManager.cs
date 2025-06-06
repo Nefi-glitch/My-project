@@ -1,9 +1,21 @@
 using NUnit.Framework;
+using System;
 using System.Collections.Generic;
 using UnityEngine;
 
 public class DeliveryManager : MonoBehaviour
 {
+
+    public event EventHandler OnRecepeSpawned;
+    public event EventHandler OnRecepeCompled;
+    public event EventHandler OnRecepeSuccess;
+    public event EventHandler OnRecepeFailed;
+
+
+
+
+
+    public static DeliveryManager Instance { get; private set; }
     [SerializeField] private RecepeListSO recepeListSO;
 
 
@@ -17,6 +29,8 @@ public class DeliveryManager : MonoBehaviour
 
     private void Awake()
     {
+        Instance = this;
+
         waitingRecepeSOList = new List<RecepeSO>();
     }
 
@@ -31,33 +45,36 @@ public class DeliveryManager : MonoBehaviour
 
             if (waitingRecepeSOList.Count < waitingRecepeMax)
             {
-                RecepeSO waittingRecepeSO = recepeListSO.recepeSOList[Random.Range(0, recepeListSO.recepeSOList.Count)];
-                waitingRecepeSOList.Add(waittingRecepeSO);
+                RecepeSO waitingRecepeSO = recepeListSO.recepeSOList[UnityEngine.Random.Range(0, recepeListSO.recepeSOList.Count)];
+
+                waitingRecepeSOList.Add(waitingRecepeSO);
+
+                OnRecepeSpawned?.Invoke(this, EventArgs.Empty);
             }
         }
     }
 
 
-    public void DeliveryRecepe(PlateKitchenObeject plateKitchenObeject)
+    public void DeliveryRecepe(PlateKitchenObject plateKitchenObject)
     {
         for (int i = 0; i < waitingRecepeSOList.Count ; i++)
         {
             RecepeSO waitingRecepeSO = waitingRecepeSOList[i];
 
-            if (waitingRecepeSO.kitchenObjectSOList.Count == plateKitchenObeject.GetKitchenObjectSOList().Count)
+            if (waitingRecepeSO.kitchenObjectSOList.Count == plateKitchenObject.GetKitchenObjectSOList().Count)
             {
                 bool plateContentMatchesRecepe = true;
 
-                foreach (KitchenObjectSO recepekitchenObjectSO in waitingRecepeSOList.kitchenObjectSOList)
+                foreach (KitchenObjectSO recepekitchenObjectSO in waitingRecepeSO.kitchenObjectSOList)
+
                 {
-
-
                     bool ingredientFound = false;
-                    foreach (KitchenObjectSO plateKitchenObjectSO in plateKitchenObeject.GetKitchenObjectSOList().kitchenObjectSOList())
+                    foreach (KitchenObjectSO plateKitchenObjectSO in plateKitchenObject.GetKitchenObjectSOList())
+
                     {
                         if (plateKitchenObjectSO == recepekitchenObjectSO)
                         {
-                            ingredientFound = false;
+                            ingredientFound = true;
                             break;
                         }
                     }
@@ -66,12 +83,26 @@ public class DeliveryManager : MonoBehaviour
                         plateContentMatchesRecepe = false;
                     }
                 }
+
+
                 if (plateContentMatchesRecepe)
                 {
                     waitingRecepeSOList.RemoveAt(i);
+
+                    OnRecepeCompled?.Invoke(this, EventArgs.Empty);
+                    OnRecepeSuccess?.Invoke(this, EventArgs.Empty);
+
                     return;
                 }
             }
         }
+        OnRecepeFailed?.Invoke(this, EventArgs.Empty);
+
+    }
+
+
+    public List<RecepeSO> GetWaitingRecepeSOList()
+    {
+        return waitingRecepeSOList;
     }
 }

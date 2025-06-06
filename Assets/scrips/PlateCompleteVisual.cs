@@ -14,7 +14,7 @@ public class PlateCompleteVisual : MonoBehaviour
 
 
     [SerializeField] private List<KitchenObjectSO_GameObject> kitchenObjectSOGameObjectList;
-    [SerializeField] private PlateKitchenObeject PlateKitchenObeject;
+    [SerializeField] private PlateKitchenObject PlateKitchenObeject;
 
     private void Start()
     {
@@ -26,7 +26,7 @@ public class PlateCompleteVisual : MonoBehaviour
         }
     }
 
-    private void PlateKitchenObeject_OnIngredientAdded(object sender, PlateKitchenObeject.OnIngredientAddedEventArgs e)
+    private void PlateKitchenObeject_OnIngredientAdded(object sender, PlateKitchenObject.OnIngredientAddedEventArgs e)
     {
         foreach (KitchenObjectSO_GameObject kitchenObjectSOGameObject in kitchenObjectSOGameObjectList)
         {

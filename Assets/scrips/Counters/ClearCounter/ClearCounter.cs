@@ -3,7 +3,7 @@ using UnityEngine;
 
 public class ClearCounter : BaseCounter
 {
-    [SerializeField] private KitchenObjectSO kitchenObjectSO;
+    [SerializeField] private KitchenObjectSO KitchenObjectSO;
 
     public override void Interact(Player player)
     {
@@ -22,16 +22,16 @@ public class ClearCounter : BaseCounter
         {
             if (player.HasKitchenObject())
             {
-                if (player.GetKitchenObject().TryGetPlate(out PlateKitchenObeject plateKitchenObeject))
+                if (player.GetKitchenObject().TryGetPlate(out PlateKitchenObject plateKitchenObject))
                 {
-                   if ( plateKitchenObeject.TryAddIngredient(GetKitchenObject().GetKitchenObjectSO()))
+                   if ( plateKitchenObject.TryAddIngredient(GetKitchenObject().GetKitchenObjectSO()))
                     GetKitchenObject().DestroySelf();
                 }
                 else
                 {
-                    if (GetKitchenObject().TryGetPlate(out plateKitchenObeject))
+                    if (GetKitchenObject().TryGetPlate(out plateKitchenObject))
                     {
-                        if (plateKitchenObeject.TryAddIngredient(player.GetKitchenObject().GetKitchenObjectSO()))
+                        if (plateKitchenObject.TryAddIngredient(player.GetKitchenObject().GetKitchenObjectSO()))
                         {
                             GetKitchenObject().DestroySelf();
                         }

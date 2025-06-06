@@ -3,7 +3,7 @@ using UnityEngine;
 
 public class PlateIconsUI : MonoBehaviour
 {
-    [SerializeField] private PlateKitchenObeject plateKitchenObeject;
+    [SerializeField] private PlateKitchenObject plateKitchenObeject;
     [SerializeField] private Transform iconTemplate;
 
 
@@ -18,7 +18,7 @@ public class PlateIconsUI : MonoBehaviour
         plateKitchenObeject.OnIngredientAdded += PlateKitchenObeject_OnIngredientAdded;
     }
 
-    private void PlateKitchenObeject_OnIngredientAdded(object sender, PlateKitchenObeject.OnIngredientAddedEventArgs e)
+    private void PlateKitchenObeject_OnIngredientAdded(object sender, PlateKitchenObject.OnIngredientAddedEventArgs e)
     {
         UpdateVisual();
     }

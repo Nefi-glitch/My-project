@@ -10,6 +10,7 @@ public class Player : MonoBehaviour, IKitchenObjectPlayer
     public static Player Instance { get; private set; }
 
     public event EventHandler <OnSelectedCounterCangedEventArgs> OnSelectedCounterChanged;
+    public event EventHandler OnPickSomething;
     public class OnSelectedCounterCangedEventArgs : EventArgs
     {
         public BaseCounter selectedCounter;
@@ -163,6 +164,12 @@ public class Player : MonoBehaviour, IKitchenObjectPlayer
     public void SetKitchenObject(KitchenObject kitchenObject)
     {
         this.kitchenObject = kitchenObject;
+
+
+        if (kitchenObject != null)
+        {
+            OnPickSomething?.Invoke(this, EventArgs.Empty);
+        }
     }
     public KitchenObject GetKitchenObject()
     {
