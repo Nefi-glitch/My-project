@@ -24,6 +24,7 @@ public class DeliveryManager : MonoBehaviour
     private float spawnRecepeTimer;
     private float spawnRecepeTimerMax = 4f;
     private int waitingRecepeMax = 4;
+    private int successfullRecepeAmount;
 
 
 
@@ -43,7 +44,7 @@ public class DeliveryManager : MonoBehaviour
         {
             spawnRecepeTimer = spawnRecepeTimerMax;
 
-            if (waitingRecepeSOList.Count < waitingRecepeMax)
+            if (KitchenGameManager.Instace.IsGamePlaying() && waitingRecepeSOList.Count < waitingRecepeMax)
             {
                 RecepeSO waitingRecepeSO = recepeListSO.recepeSOList[UnityEngine.Random.Range(0, recepeListSO.recepeSOList.Count)];
 
@@ -87,6 +88,8 @@ public class DeliveryManager : MonoBehaviour
 
                 if (plateContentMatchesRecepe)
                 {
+                    successfullRecepeAmount ++;
+
                     waitingRecepeSOList.RemoveAt(i);
 
                     OnRecepeCompled?.Invoke(this, EventArgs.Empty);
@@ -104,5 +107,10 @@ public class DeliveryManager : MonoBehaviour
     public List<RecepeSO> GetWaitingRecepeSOList()
     {
         return waitingRecepeSOList;
+    }
+
+    public int GetSuccessRecepesAmount()
+    {
+        return successfullRecepeAmount;
     }
 }

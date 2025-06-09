@@ -3,6 +3,17 @@ using UnityEngine;
 
 public class BaseCounter : MonoBehaviour, IKitchenObjectPlayer
 {
+
+
+    public static void ResetStaticData()
+    {
+        OnAnyObjectPlaceHere = null;
+    }
+
+
+
+
+
     public static event EventHandler OnAnyObjectPlaceHere;
 
 
